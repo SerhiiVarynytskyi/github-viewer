@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+// add test dependencies:
+apply from: "../buildsystem/test.gradle"
+
+android {
+
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.my.githubviewer"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation appDependencies.kotlin
+    implementation appDependencies.kotlinxCoroutinesCore
+    implementation appDependencies.kotlinxCoroutinesAndroid
+    implementation appDependencies.coreKtx
+
+    // android support libs
+    implementation appDependencies.appCompat
+    implementation appDependencies.recyclerview
+    implementation appDependencies.cardview
+
+    // ui
+    implementation appDependencies.material
+    implementation appDependencies.constraintLayout
+
+    // android architecture component
+    implementation appDependencies.lifecycleExtensions
+    implementation appDependencies.lifecycleLivedata
+    implementation appDependencies.lifecycleLivedataKtx
+    implementation appDependencies.lifecycleViewmodelKtx
+    implementation appDependencies.pagingRuntime
+
+    kapt appDependencies.databindingCompiler
+
+    // network
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofitGsonConverter
+    implementation appDependencies.okhttpLogging
+
+    //DI
+    implementation appDependencies.dagger
+    implementation appDependencies.daggerAndroid
+    implementation appDependencies.daggerAndroidSupport
+    kapt appDependencies.daggerCompiler
+    kapt appDependencies.daggerAndroidProcessor
+
+
+    // Room components
+    implementation appDependencies.roomKtx
+    implementation appDependencies.roomRuntime
+    kapt appDependencies.roomCompiler
+
+    //TODO need remove
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
+}

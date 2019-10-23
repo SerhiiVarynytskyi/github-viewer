@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GitHub Viewer</string>
+
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
+
+    <string name="failure_network_connection">No Network Connection.</string>
+    <string name="failure_server_error">Server Error</string>
+    <string name="email_or_password_is_empty">Email or Password is empty</string>
+
+    <string name="error_no_data">No data returned from server. Please try again</string>
+    <string name="error_network">Error fetching data. %1$s</string>
+    <string name="error_unknown">Unknown error. %1$s</string>
+    
+</resources>

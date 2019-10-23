@@ -1,0 +1,16 @@
+apply plugin: "de.mannodermaus.android-junit5"
+
+dependencies {
+    def appTestDependencies = rootProject.ext.appTestDependencies
+
+    testImplementation appTestDependencies.junitJupiterApi
+    testImplementation appTestDependencies.junitJupiterParams
+    testRuntimeOnly appTestDependencies.junitJupiterEngine
+
+    testImplementation appTestDependencies.mockk
+    testImplementation appTestDependencies.assertj
+    testImplementation appTestDependencies.hamcrest
+
+    // Architecture Components for Tests
+    testImplementation appTestDependencies.androidxArchCore
+}

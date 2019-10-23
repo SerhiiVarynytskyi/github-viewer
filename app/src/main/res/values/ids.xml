@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--App Views-->
+    <item type="id" name="fragmentContainer"/>
+    <item type="id" name="recyclerView"/>
+    <item type="id" name="emailEditText"/>
+    <item type="id" name="emailEditTextContainer"/>
+    <item type="id" name="passwordEditText"/>
+    <item type="id" name="passwordEditTextContainer"/>
+    <item type="id" name="buttonLogin"/>
+    <item type="id" name="progressBarLoading"/>
+</resources>
